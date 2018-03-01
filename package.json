@@ -1,0 +1,17 @@
+{
+  "name": "chatapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start":"node server/server.js"
+  },
+  "engines": {
+    "node":"8.9.1"
+  },
+  "author": "Amir Ali",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
