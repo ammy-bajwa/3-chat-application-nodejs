@@ -14,10 +14,25 @@ var io = socketIO(server);
 app.use(express.static(publicPatch));
 io.on('connection', (socket) => {
     console.log('New User Connected');
+    socket.emit('newMessage',{
+        from:'Admin',
+        text:'greetings from the admin',
+        createdAt:new Date().getTime()
+    });
+    socket.broadcast.emit('newMessage',{
+        from:'Admin',
+        text:'New user joined',
+        createdAt:new Date().getTime()
+    });
 
     socket.on('createMessage',(message)=>{
         console.log('createMessage',message);
-        io.emit('newMessage',{
+        // io.emit('newMessage',{
+        //     from:message.from,
+        //     text:message.text,
+        //     createdAt:new Date().getTime()
+        // });
+        socket.broadcast.emit('newMessage',{
             from:message.from,
             text:message.text,
             createdAt:new Date().getTime()
